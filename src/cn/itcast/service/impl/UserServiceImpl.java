@@ -3,7 +3,6 @@ package cn.itcast.service.impl;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-
 import cn.itcast.entity.Student;
 
 /***
@@ -22,5 +21,6 @@ public class UserServiceImpl extends BaseServiceImpl<Student> {
 		}
 		return null;
 	}
+	
 	
 }

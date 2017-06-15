@@ -1,5 +1,5 @@
 package cn.itcast.entity;
-// Generated 2017-6-13 23:52:06 by Hibernate Tools 3.5.0.Final
+// Generated 2017-6-14 22:08:02 by Hibernate Tools 5.1.0.Alpha1
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +17,7 @@ public class Student implements java.io.Serializable {
 	private String sname;
 	private String spassword;
 	private String sclass;
+	private String ssex;
 
 	public Student() {
 	}
@@ -26,11 +27,12 @@ public class Student implements java.io.Serializable {
 		this.sname = sname;
 	}
 
-	public Student(int sno, String sname, String spassword, String sclass) {
+	public Student(int sno, String sname, String spassword, String sclass, String ssex) {
 		this.sno = sno;
 		this.sname = sname;
 		this.spassword = spassword;
 		this.sclass = sclass;
+		this.ssex = ssex;
 	}
 
 	@Id
@@ -69,6 +71,15 @@ public class Student implements java.io.Serializable {
 
 	public void setSclass(String sclass) {
 		this.sclass = sclass;
+	}
+
+	@Column(name = "ssex", length = 4)
+	public String getSsex() {
+		return this.ssex;
+	}
+
+	public void setSsex(String ssex) {
+		this.ssex = ssex;
 	}
 
 }

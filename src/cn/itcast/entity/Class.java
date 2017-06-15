@@ -1,8 +1,10 @@
 package cn.itcast.entity;
-// Generated 2017-6-13 23:52:06 by Hibernate Tools 3.5.0.Final
+// Generated 2017-6-14 22:08:02 by Hibernate Tools 5.1.0.Alpha1
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,29 +15,25 @@ import javax.persistence.Table;
 @Table(name = "class", catalog = "coursesystem")
 public class Class implements java.io.Serializable {
 
-	private int classid;
+	private Integer classid;
 	private String classname;
 
 	public Class() {
 	}
 
-	public Class(int classid) {
-		this.classid = classid;
-	}
-
-	public Class(int classid, String classname) {
-		this.classid = classid;
+	public Class(String classname) {
 		this.classname = classname;
 	}
 
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 
 	@Column(name = "classid", unique = true, nullable = false)
-	public int getClassid() {
+	public Integer getClassid() {
 		return this.classid;
 	}
 
-	public void setClassid(int classid) {
+	public void setClassid(Integer classid) {
 		this.classid = classid;
 	}
 

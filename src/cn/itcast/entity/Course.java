@@ -1,9 +1,13 @@
 package cn.itcast.entity;
-// Generated 2017-6-13 23:52:06 by Hibernate Tools 3.5.0.Final
+// Generated 2017-6-14 22:08:02 by Hibernate Tools 5.1.0.Alpha1
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -16,6 +20,7 @@ public class Course implements java.io.Serializable {
 	private int cno;
 	private String cname;
 	private String tname;
+	private Set<Classcourse> classcourses = new HashSet<Classcourse>(0);
 
 	public Course() {
 	}
@@ -24,10 +29,11 @@ public class Course implements java.io.Serializable {
 		this.cno = cno;
 	}
 
-	public Course(int cno, String cname, String tname) {
+	public Course(int cno, String cname, String tname, Set<Classcourse> classcourses) {
 		this.cno = cno;
 		this.cname = cname;
 		this.tname = tname;
+		this.classcourses = classcourses;
 	}
 
 	@Id
@@ -57,6 +63,15 @@ public class Course implements java.io.Serializable {
 
 	public void setTname(String tname) {
 		this.tname = tname;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
+	public Set<Classcourse> getClasscourses() {
+		return this.classcourses;
+	}
+
+	public void setClasscourses(Set<Classcourse> classcourses) {
+		this.classcourses = classcourses;
 	}
 
 }

@@ -10,7 +10,7 @@
 <link rel="stylesheet" type="text/css" href="style/register-login.css">
 </head>
 <body>
-<s:form action="register!reg.action" method="post" namespace="/action">
+<s:form action="register!reg.action" method="post" namespace="/">
 	<div id="box"></div>
 	<div class="cent-box register-box">
 		<div class="cont-main clearfix">
@@ -38,7 +38,7 @@
 							placeholder="姓名" required>
 					</div>
 					<div class="group-ipt user">
-						<input type="text" name="sex" id="student.sex" class="ipt"
+						<input type="text" name="student.ssex" id="student.ssex" class="ipt"
 							placeholder="性别" required>
 					</div>
 					<div class="group-ipt user">
@@ -68,5 +68,12 @@
 	<script src='js/layer/layer.js' type="text/javascript"></script>
 	<script src='js/index.js' type="text/javascript"></script>
 </s:form>
+<script>
+		$("#xuehao").change(function(){
+			$.get("./login.jsp",{xuehao:$(this).val()},function(data,statu){
+				alert(data);
+			});
+		});
+</script>
 </body>
 </html>
