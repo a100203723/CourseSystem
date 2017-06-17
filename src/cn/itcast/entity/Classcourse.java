@@ -1,5 +1,5 @@
 package cn.itcast.entity;
-// Generated 2017-6-14 22:08:02 by Hibernate Tools 5.1.0.Alpha1
+// Generated 2017-6-16 9:48:00 by Hibernate Tools 5.1.0.Alpha1
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,7 +20,7 @@ public class Classcourse implements java.io.Serializable {
 
 	private Integer id;
 	private Course course;
-	private String coursertime;
+	private int coursertime;
 	private String courseaddr;
 	private String classname;
 	private String coursedata;
@@ -28,14 +28,7 @@ public class Classcourse implements java.io.Serializable {
 	public Classcourse() {
 	}
 
-	public Classcourse(Course course, String coursertime, String courseaddr, String classname) {
-		this.course = course;
-		this.coursertime = coursertime;
-		this.courseaddr = courseaddr;
-		this.classname = classname;
-	}
-
-	public Classcourse(Course course, String coursertime, String courseaddr, String classname, String coursedata) {
+	public Classcourse(Course course, int coursertime, String courseaddr, String classname, String coursedata) {
 		this.course = course;
 		this.coursertime = coursertime;
 		this.courseaddr = courseaddr;
@@ -55,7 +48,7 @@ public class Classcourse implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "cno", nullable = false)
 	public Course getCourse() {
 		return this.course;
@@ -65,12 +58,12 @@ public class Classcourse implements java.io.Serializable {
 		this.course = course;
 	}
 
-	@Column(name = "coursertime", nullable = false, length = 20)
-	public String getCoursertime() {
+	@Column(name = "coursertime", nullable = false)
+	public int getCoursertime() {
 		return this.coursertime;
 	}
 
-	public void setCoursertime(String coursertime) {
+	public void setCoursertime(int coursertime) {
 		this.coursertime = coursertime;
 	}
 
@@ -92,7 +85,7 @@ public class Classcourse implements java.io.Serializable {
 		this.classname = classname;
 	}
 
-	@Column(name = "coursedata", length = 20)
+	@Column(name = "coursedata", nullable = false, length = 20)
 	public String getCoursedata() {
 		return this.coursedata;
 	}

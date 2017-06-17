@@ -28,10 +28,14 @@
 		<div class="login form">
 			<div class="group">
 				<div class="group-ipt email">
-					<input type="text" name="student.sno" id="xuehao" class="ipt" placeholder="输入您的学号" required>
+					<input type="text" name="student.sno" maxlength="8" id="xuehao" class="ipt" 
+						onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" 
+						placeholder="输入您的学号" required>
 				</div>
 				<div class="group-ipt password">
-					<input type="password" name="student.spassword" id="password" class="ipt" placeholder="输入您的登录密码" required>
+					<input type="password" name="student.spassword" id="password" class="ipt" maxlength="12"
+						onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" 
+						placeholder="输入您的登录密码" required>
 				</div>
 	
 			</div>
@@ -44,7 +48,7 @@
 		<div class="remember clearfix">
 			<label class="remember-me"><span class="icon"><span class="zt"></span></span><input type="checkbox" name="remember-me" id="remember-me" class="remember-mecheck" checked>记住我</label>
 			<label class="forgot-password">
-			  ${msg}
+				<font color="green"  size="5">${msg}</font>	 	   
 				<a href="register.jsp">用户注册</a>
 			</label>
 		</div>

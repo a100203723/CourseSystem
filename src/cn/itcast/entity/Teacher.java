@@ -1,11 +1,15 @@
 package cn.itcast.entity;
-// Generated 2017-6-14 22:08:02 by Hibernate Tools 5.1.0.Alpha1
+// Generated 2017-6-16 9:48:00 by Hibernate Tools 5.1.0.Alpha1
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -15,30 +19,30 @@ import javax.persistence.Table;
 @Table(name = "teacher", catalog = "coursesystem")
 public class Teacher implements java.io.Serializable {
 
-	private Integer id;
-	private String tname;
 	private Integer tnumber;
+	private String tname;
 	private String tpassword;
+	private Set<Tc> tcs = new HashSet<Tc>(0);
 
 	public Teacher() {
 	}
 
-	public Teacher(String tname, Integer tnumber, String tpassword) {
+	public Teacher(String tname, String tpassword, Set<Tc> tcs) {
 		this.tname = tname;
-		this.tnumber = tnumber;
 		this.tpassword = tpassword;
+		this.tcs = tcs;
 	}
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 
-	@Column(name = "id", unique = true, nullable = false)
-	public Integer getId() {
-		return this.id;
+	@Column(name = "tnumber", unique = true, nullable = false)
+	public Integer getTnumber() {
+		return this.tnumber;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setTnumber(Integer tnumber) {
+		this.tnumber = tnumber;
 	}
 
 	@Column(name = "tname", length = 20)
@@ -50,15 +54,6 @@ public class Teacher implements java.io.Serializable {
 		this.tname = tname;
 	}
 
-	@Column(name = "tnumber")
-	public Integer getTnumber() {
-		return this.tnumber;
-	}
-
-	public void setTnumber(Integer tnumber) {
-		this.tnumber = tnumber;
-	}
-
 	@Column(name = "tpassword", length = 20)
 	public String getTpassword() {
 		return this.tpassword;
@@ -66,6 +61,15 @@ public class Teacher implements java.io.Serializable {
 
 	public void setTpassword(String tpassword) {
 		this.tpassword = tpassword;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "teacher")
+	public Set<Tc> getTcs() {
+		return this.tcs;
+	}
+
+	public void setTcs(Set<Tc> tcs) {
+		this.tcs = tcs;
 	}
 
 }

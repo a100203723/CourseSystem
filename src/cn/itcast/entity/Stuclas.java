@@ -1,11 +1,14 @@
 package cn.itcast.entity;
-// Generated 2017-6-14 22:08:02 by Hibernate Tools 5.1.0.Alpha1
+// Generated 2017-6-16 9:48:00 by Hibernate Tools 5.1.0.Alpha1
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -16,17 +19,22 @@ import javax.persistence.Table;
 public class Stuclas implements java.io.Serializable {
 
 	private StuclasId id;
+	private Class1 class1;
+	private Student student;
 
 	public Stuclas() {
 	}
 
-	public Stuclas(StuclasId id) {
+	public Stuclas(StuclasId id, Class1 class1, Student student) {
 		this.id = id;
+		this.class1 = class1;
+		this.student = student;
 	}
 
 	@EmbeddedId
 
-	@AttributeOverrides({ @AttributeOverride(name = "sno", column = @Column(name = "sno", nullable = false)),
+	@AttributeOverrides({ @AttributeOverride(name = "id", column = @Column(name = "id", nullable = false)),
+			@AttributeOverride(name = "sno", column = @Column(name = "sno", nullable = false)),
 			@AttributeOverride(name = "classid", column = @Column(name = "classid", nullable = false)) })
 	public StuclasId getId() {
 		return this.id;
@@ -34,6 +42,26 @@ public class Stuclas implements java.io.Serializable {
 
 	public void setId(StuclasId id) {
 		this.id = id;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "classid", nullable = false, insertable = false, updatable = false)
+	public Class1 getClass1() {
+		return this.class1;
+	}
+
+	public void setClass1(Class1 class1) {
+		this.class1 = class1;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "sno", nullable = false, insertable = false, updatable = false)
+	public Student getStudent() {
+		return this.student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
 	}
 
 }

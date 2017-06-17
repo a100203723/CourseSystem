@@ -1,5 +1,5 @@
 package cn.itcast.entity;
-// Generated 2017-6-14 22:08:02 by Hibernate Tools 5.1.0.Alpha1
+// Generated 2017-6-16 9:48:00 by Hibernate Tools 5.1.0.Alpha1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -19,8 +19,8 @@ public class Course implements java.io.Serializable {
 
 	private int cno;
 	private String cname;
-	private String tname;
 	private Set<Classcourse> classcourses = new HashSet<Classcourse>(0);
+	private Set<Tc> tcs = new HashSet<Tc>(0);
 
 	public Course() {
 	}
@@ -29,11 +29,11 @@ public class Course implements java.io.Serializable {
 		this.cno = cno;
 	}
 
-	public Course(int cno, String cname, String tname, Set<Classcourse> classcourses) {
+	public Course(int cno, String cname, Set<Classcourse> classcourses, Set<Tc> tcs) {
 		this.cno = cno;
 		this.cname = cname;
-		this.tname = tname;
 		this.classcourses = classcourses;
+		this.tcs = tcs;
 	}
 
 	@Id
@@ -56,15 +56,6 @@ public class Course implements java.io.Serializable {
 		this.cname = cname;
 	}
 
-	@Column(name = "tname", length = 20)
-	public String getTname() {
-		return this.tname;
-	}
-
-	public void setTname(String tname) {
-		this.tname = tname;
-	}
-
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
 	public Set<Classcourse> getClasscourses() {
 		return this.classcourses;
@@ -72,6 +63,15 @@ public class Course implements java.io.Serializable {
 
 	public void setClasscourses(Set<Classcourse> classcourses) {
 		this.classcourses = classcourses;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
+	public Set<Tc> getTcs() {
+		return this.tcs;
+	}
+
+	public void setTcs(Set<Tc> tcs) {
+		this.tcs = tcs;
 	}
 
 }

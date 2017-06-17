@@ -1,9 +1,13 @@
 package cn.itcast.entity;
-// Generated 2017-6-14 22:08:02 by Hibernate Tools 5.1.0.Alpha1
+// Generated 2017-6-16 9:48:00 by Hibernate Tools 5.1.0.Alpha1
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -18,6 +22,7 @@ public class Student implements java.io.Serializable {
 	private String spassword;
 	private String sclass;
 	private String ssex;
+	private Set<Stuclas> stuclases = new HashSet<Stuclas>(0);
 
 	public Student() {
 	}
@@ -27,12 +32,13 @@ public class Student implements java.io.Serializable {
 		this.sname = sname;
 	}
 
-	public Student(int sno, String sname, String spassword, String sclass, String ssex) {
+	public Student(int sno, String sname, String spassword, String sclass, String ssex, Set<Stuclas> stuclases) {
 		this.sno = sno;
 		this.sname = sname;
 		this.spassword = spassword;
 		this.sclass = sclass;
 		this.ssex = ssex;
+		this.stuclases = stuclases;
 	}
 
 	@Id
@@ -80,6 +86,15 @@ public class Student implements java.io.Serializable {
 
 	public void setSsex(String ssex) {
 		this.ssex = ssex;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "student")
+	public Set<Stuclas> getStuclases() {
+		return this.stuclases;
+	}
+
+	public void setStuclases(Set<Stuclas> stuclases) {
+		this.stuclases = stuclases;
 	}
 
 }

@@ -285,4 +285,5 @@ public interface BaseDaoI<T> {
 	 */
 	public String getBySql(String sql);
 
+	
 }

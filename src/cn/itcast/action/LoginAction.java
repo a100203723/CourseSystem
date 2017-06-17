@@ -1,5 +1,7 @@
 package cn.itcast.action;
 
+import java.util.List;
+
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -17,7 +19,7 @@ import cn.itcast.service.impl.UserServiceImpl;
 
 @Namespace("/")
 @Action(value="login")
-@Results({@Result(name="success",location="/index.jsp"),
+@Results({@Result(name="success",location="/studentcheck.jsp"),
 	@Result(name="error",location="/login.jsp"),
 	@Result(name="none" ,location="/index2.jsp"),
 	@Result(name="input" ,location="/index2.jsp")})
@@ -67,7 +69,12 @@ public class LoginAction extends ActionSupport {
 		System.out.println(st);
 		if(st!=null) {
 			System.out.println("登录成功");
-			actionContext.getSession().put("loginmsg", "登录成功");
+			Student s=userService.getByHql("from Student s where s.sno="+ student.getSno()+"");
+			actionContext.getSession().put("sno", student.getSno());
+			actionContext.getSession().put("name", s.getSname());
+			actionContext.getSession().put("sname", s.getSname());
+			actionContext.getSession().put("sex", s.getSsex());
+			actionContext.getSession().put("class1", s.getSclass());
 			return SUCCESS;
 		}
 		return ERROR;

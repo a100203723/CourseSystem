@@ -1,11 +1,14 @@
 package cn.itcast.entity;
-// Generated 2017-6-14 22:08:02 by Hibernate Tools 5.1.0.Alpha1
+// Generated 2017-6-16 9:48:00 by Hibernate Tools 5.1.0.Alpha1
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -15,25 +18,48 @@ import javax.persistence.Table;
 @Table(name = "tc", catalog = "coursesystem")
 public class Tc implements java.io.Serializable {
 
-	private TcId id;
+	private Integer id;
+	private Course course;
+	private Teacher teacher;
 
 	public Tc() {
 	}
 
-	public Tc(TcId id) {
-		this.id = id;
+	public Tc(Course course, Teacher teacher) {
+		this.course = course;
+		this.teacher = teacher;
 	}
 
-	@EmbeddedId
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
 
-	@AttributeOverrides({ @AttributeOverride(name = "cno", column = @Column(name = "cno", nullable = false)),
-			@AttributeOverride(name = "tname", column = @Column(name = "tname", nullable = false, length = 20)) })
-	public TcId getId() {
+	@Column(name = "id", unique = true, nullable = false)
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(TcId id) {
+	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "cno", nullable = false)
+	public Course getCourse() {
+		return this.course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "tnumber", nullable = false)
+	public Teacher getTeacher() {
+		return this.teacher;
+	}
+
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
 	}
 
 }

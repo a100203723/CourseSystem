@@ -1,5 +1,5 @@
 package cn.itcast.entity;
-// Generated 2017-6-14 22:08:02 by Hibernate Tools 5.1.0.Alpha1
+// Generated 2017-6-16 9:48:00 by Hibernate Tools 5.1.0.Alpha1
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -10,15 +10,26 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class StuclasId implements java.io.Serializable {
 
+	private int id;
 	private int sno;
 	private int classid;
 
 	public StuclasId() {
 	}
 
-	public StuclasId(int sno, int classid) {
+	public StuclasId(int id, int sno, int classid) {
+		this.id = id;
 		this.sno = sno;
 		this.classid = classid;
+	}
+
+	@Column(name = "id", nullable = false)
+	public int getId() {
+		return this.id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	@Column(name = "sno", nullable = false)
@@ -48,12 +59,14 @@ public class StuclasId implements java.io.Serializable {
 			return false;
 		StuclasId castOther = (StuclasId) other;
 
-		return (this.getSno() == castOther.getSno()) && (this.getClassid() == castOther.getClassid());
+		return (this.getId() == castOther.getId()) && (this.getSno() == castOther.getSno())
+				&& (this.getClassid() == castOther.getClassid());
 	}
 
 	public int hashCode() {
 		int result = 17;
 
+		result = 37 * result + this.getId();
 		result = 37 * result + this.getSno();
 		result = 37 * result + this.getClassid();
 		return result;

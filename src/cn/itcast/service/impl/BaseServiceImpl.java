@@ -74,6 +74,8 @@ public class BaseServiceImpl<T> implements BaseServiceI<T> {
 		return baseDao.find(hql, params);
 	}
 	
+	
+	
 	public List<T> find(String hql, int page, int rows) {
 		return baseDao.find(hql, page, rows);
 	}

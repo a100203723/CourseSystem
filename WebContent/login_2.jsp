@@ -26,10 +26,14 @@
 		<div class="login form">
 			<div class="group">
 				<div class="group-ipt email">
-					<input type="text" name="gonghao" id="gonghao" class="ipt" placeholder="输入您的工号" required>
+					<input type="text" name="gonghao" id="gonghao" class="ipt" placeholder="输入您的工号" maxlength="8"
+						onkeyup="if(/\D/.test(this.value)){alert('只能输入数字');this.value='';}"
+					 	required>
 				</div>
 				<div class="group-ipt password">
-					<input type="password" name="password" id="password" class="ipt" placeholder="输入您的登录密码" required>
+					<input type="password" name="password" id="password" class="ipt" placeholder="输入您的登录密码" maxlength="12"
+					 	onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"
+					 	required>
 				</div>
 	
 			</div>
