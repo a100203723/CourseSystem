@@ -48,7 +48,7 @@
 		<div class="remember clearfix">
 			<label class="remember-me"><span class="icon"><span class="zt"></span></span><input type="checkbox" name="remember-me" id="remember-me" class="remember-mecheck" checked>记住我</label>
 			<label class="forgot-password">
-				<font color="green"  size="5">${msg}</font>	 	   
+				<font color="red"  size="3">${msg}</font>	 	   
 				<a href="register.jsp">用户注册</a>
 			</label>
 		</div>

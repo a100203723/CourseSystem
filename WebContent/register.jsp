@@ -6,7 +6,6 @@
 <head>
 <meta charset="utf-8">
 <title>用户注册</title>
-
 <link rel="stylesheet" type="text/css" href="style/register-login.css">
 </head>
 <body>
@@ -21,7 +20,7 @@
 			</div>
 			<div class="login form">
 				<div class="group">
-					<div class="group-ipt email">
+					<div class="group-ipt email" style="display:">
 						<input type="text" name="student.sno" id="xuehao" class="ipt" maxlength="8"
 							onkeyup="if(/\D/.test(this.value)){alert('只能输入数字');this.value='';}"
 							placeholder="学号" required>

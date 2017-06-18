@@ -2,10 +2,10 @@ package cn.itcast.service.impl;
 
 import org.springframework.stereotype.Service;
 
-import cn.itcast.entity.Student;
-import cn.itcast.entity.Tc;
+import cn.itcast.entity.Classcourse;
+
 
 @Service
-public class TeacherServiceImpl extends BaseServiceImpl<Student> {
+public class TeacherServiceImpl extends BaseServiceImpl<Classcourse> {
 
 }

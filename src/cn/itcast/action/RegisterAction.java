@@ -44,7 +44,7 @@ public class RegisterAction extends ActionSupport {
 		
 		if(id!=null)
 		{
-			applicationContext.getSession().put("msg", "×¢²á³É¹¦");
+			applicationContext.getSession().put("msg", "×¢²á³É¹¦ ÇëµÇÂ¼");
 			return "success";
 		}
 		else

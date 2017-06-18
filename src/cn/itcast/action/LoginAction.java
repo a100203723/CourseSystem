@@ -19,7 +19,7 @@ import cn.itcast.service.impl.UserServiceImpl;
 
 @Namespace("/")
 @Action(value="login")
-@Results({@Result(name="success",location="/studentcheck.jsp"),
+@Results({@Result(name="success",location="/kuangjia.jsp"),
 	@Result(name="error",location="/login.jsp"),
 	@Result(name="none" ,location="/index2.jsp"),
 	@Result(name="input" ,location="/index2.jsp")})
@@ -76,6 +76,9 @@ public class LoginAction extends ActionSupport {
 			actionContext.getSession().put("sex", s.getSsex());
 			actionContext.getSession().put("class1", s.getSclass());
 			return SUCCESS;
+		}
+		else{
+			actionContext.getSession().put("msg", "’ÀªßªÚ’ﬂ√‹¬Î¥ÌŒÛ");
 		}
 		return ERROR;
 	}

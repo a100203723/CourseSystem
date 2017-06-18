@@ -88,7 +88,7 @@ public class Student implements java.io.Serializable {
 		this.ssex = ssex;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "student")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "student")
 	public Set<Stuclas> getStuclases() {
 		return this.stuclases;
 	}

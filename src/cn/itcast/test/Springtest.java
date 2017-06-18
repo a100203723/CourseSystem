@@ -4,13 +4,14 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import cn.itcast.entity.Classcourse;
 import cn.itcast.entity.Course;
-import cn.itcast.entity.Student;
 import cn.itcast.entity.Tc;
 import cn.itcast.entity.Teacher;
 import cn.itcast.service.impl.ClassServiceImpl;
@@ -39,13 +40,14 @@ public class Springtest {
 
 	@Test
 	public void test1() {
-		int sno = 20152243;
-		Map<Integer, Object> map = new HashMap<>();
-		map.put(sno, sno);
+		String tname = "Èí¼þ°à15-1";
+		Map<String, Object> map = new HashMap<>();
+		map.put("tname", tname);
 		teacherService = ctx.getBean(TeacherServiceImpl.class);
-		Student ce = teacherService.getByHql("from Student t where t.sno="+ sno +"");
-		
-			System.out.println(ce.getSno()+":"+ce.getSsex()+":"+ce.getSclass());
+		List<Classcourse> ce = teacherService.find("from Classcourse t where t.classname=:tname"+" order by coursertime asc", map);
+		for (Classcourse t : ce) {
+			System.out.println("ÐÇÆÚ"+t.getCoursertime()+":"+ t.getCourse().getCname() + ":" + t.getCoursedata());
 		}
 	}
 
+}

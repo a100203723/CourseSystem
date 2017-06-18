@@ -56,7 +56,7 @@ public class Course implements java.io.Serializable {
 		this.cname = cname;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "course")
 	public Set<Classcourse> getClasscourses() {
 		return this.classcourses;
 	}
@@ -65,7 +65,7 @@ public class Course implements java.io.Serializable {
 		this.classcourses = classcourses;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "course")
 	public Set<Tc> getTcs() {
 		return this.tcs;
 	}

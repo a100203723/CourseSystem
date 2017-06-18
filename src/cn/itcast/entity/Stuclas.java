@@ -44,7 +44,7 @@ public class Stuclas implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "classid", nullable = false, insertable = false, updatable = false)
 	public Class1 getClass1() {
 		return this.class1;

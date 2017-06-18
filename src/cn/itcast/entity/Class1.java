@@ -52,7 +52,7 @@ public class Class1 implements java.io.Serializable {
 		this.classname = classname;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "class1")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "class1")
 	public Set<Stuclas> getStuclases() {
 		return this.stuclases;
 	}

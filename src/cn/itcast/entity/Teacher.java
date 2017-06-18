@@ -63,7 +63,7 @@ public class Teacher implements java.io.Serializable {
 		this.tpassword = tpassword;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "teacher")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "teacher")
 	public Set<Tc> getTcs() {
 		return this.tcs;
 	}
